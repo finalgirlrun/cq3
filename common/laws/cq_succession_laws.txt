@@ -1,0 +1,75 @@
+# Crusader Queens - Succession Law Overrides
+# Flips gender defaults: matrilineal succession is now standard,
+# female rulers are the norm, men marry into women's dynasties.
+
+# ── Feudal / Clan / Tribal gender succession defaults ──────────────────────────
+
+# Override: set female_only as the DEFAULT gender law for all new realms
+# (replaces the vanilla male_only default)
+
+cq_gender_laws = {
+
+	female_only_succession_law = {
+		# Women inherit first. Men only if no eligible women exist.
+		can_have = {
+			OR = {
+				has_title_law = female_only_succession_law
+				government_has_flag = government_is_feudal
+				government_has_flag = government_is_clan
+			}
+		}
+
+		succession_order_modifier = {
+			gender_priority = female
+		}
+
+		flag = gender_law
+		default = yes    # <── This makes female-first the out-of-the-box default
+
+		ai_will_do = {
+			value = 100
+		}
+	}
+
+	# Equal gender law — available as a step "down" toward old vanilla behavior
+	equal_succession_law = {
+		can_have = {
+			OR = {
+				has_title_law = equal_succession_law
+				has_title_law = female_only_succession_law
+				government_has_flag = government_is_feudal
+				government_has_flag = government_is_clan
+			}
+		}
+
+		succession_order_modifier = {
+			gender_priority = equal
+		}
+
+		flag = gender_law
+
+		ai_will_do = {
+			value = 10
+		}
+	}
+
+	# Male-only is now the "regressive" option — requires innovation or faith unlock
+	male_only_succession_law = {
+		can_have = {
+			OR = {
+				has_title_law = male_only_succession_law
+				has_innovation = innovation_cq_patriarchy   # Custom innovation (see innovations file)
+			}
+		}
+
+		succession_order_modifier = {
+			gender_priority = male
+		}
+
+		flag = gender_law
+
+		ai_will_do = {
+			value = 0   # AI will never choose this voluntarily
+		}
+	}
+}

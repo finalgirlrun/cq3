@@ -1,0 +1,59 @@
+# Crusader Queens - Religion / Faith Gender Doctrine Overrides
+# Flips all vanilla faiths so female clergy and female rulers are the
+# DEFAULT blessed state. Male-dominated clergy becomes the "astray" doctrine.
+
+# ── Doctrine value remapping ──────────────────────────────────────────────────
+# vanilla "male_only"    → replaced with "female_only"
+# vanilla "female_only"  → replaced with "male_only"   (now rare / heretical)
+# vanilla "equal"        → stays "equal"
+
+# These overrides slot into the religion/religions folder and patch the
+# relevant doctrine entries. Each major religion group is covered below.
+
+# ── Christianity (Latin / Orthodox / Miaphysite / Nestorian) ──────────────────
+christianity_cq_patch = {
+	clergy_gender_doctrine = female_only        # Female priests are orthodox
+	ruler_gender_doctrine  = female_only        # Queens regnant are the norm
+}
+
+# ── Islam (Sunni / Shia / Ibadi) ─────────────────────────────────────────────
+islam_cq_patch = {
+	clergy_gender_doctrine = female_only
+	ruler_gender_doctrine  = female_only
+}
+
+# ── Judaism ───────────────────────────────────────────────────────────────────
+judaism_cq_patch = {
+	clergy_gender_doctrine = female_only
+	ruler_gender_doctrine  = female_only
+}
+
+# ── Zoroastrianism ────────────────────────────────────────────────────────────
+zoroastrianism_cq_patch = {
+	clergy_gender_doctrine = female_only
+	ruler_gender_doctrine  = female_only
+}
+
+# ── Norse / Germanic paganism ─────────────────────────────────────────────────
+germanic_cq_patch = {
+	clergy_gender_doctrine = female_only
+	ruler_gender_doctrine  = female_only
+}
+
+# ── Tengri / Steppe faiths ────────────────────────────────────────────────────
+tengri_cq_patch = {
+	clergy_gender_doctrine = female_only
+	ruler_gender_doctrine  = female_only
+}
+
+# ── Hindu / Dharmic ───────────────────────────────────────────────────────────
+hinduism_cq_patch = {
+	clergy_gender_doctrine = female_only
+	ruler_gender_doctrine  = female_only
+}
+
+# ── Buddhist ──────────────────────────────────────────────────────────────────
+buddhism_cq_patch = {
+	clergy_gender_doctrine = female_only
+	ruler_gender_doctrine  = female_only
+}

@@ -1,0 +1,23 @@
+# Crusader Queens - Game Rules
+# Sets world-generation and gameplay defaults to a matriarchal baseline.
+
+cq_gender_world_rules = {
+
+	# All landed titles start with female_only succession unless overridden
+	default_gender_law = {
+		type = gender_law
+		default = female_only
+	}
+
+	# Matrilineal marriage is the default contract type
+	default_marriage_type = {
+		type = marriage_contract
+		default = matrilineal
+	}
+
+	# Female court positions: all positions open to women by default
+	female_court_positions = {
+		type = court_positions
+		default = all_open
+	}
+}

@@ -1,0 +1,128 @@
+# Crusader Queens - Title & Ruler Localization (English)
+# Swaps gendered titles throughout the UI and event text.
+# Format: key: "value"   (CK3 uses UTF-8 BOM .yml files — keep encoding correct!)
+
+l_english:
+
+ # ── Ruler titles ─────────────────────────────────────────────────────────────
+ KING:0 "Queen"
+ KING_lowercase:0 "queen"
+ QUEEN:0 "King"
+ QUEEN_lowercase:0 "king"
+
+ EMPEROR:0 "Empress"
+ EMPEROR_lowercase:0 "empress"
+ EMPRESS:0 "Emperor"
+ EMPRESS_lowercase:0 "emperor"
+
+ DUKE:0 "Duchess"
+ DUKE_lowercase:0 "duchess"
+ DUCHESS:0 "Duke"
+ DUCHESS_lowercase:0 "duke"
+
+ COUNT:0 "Countess"
+ COUNT_lowercase:0 "countess"
+ COUNTESS:0 "Count"
+ COUNTESS_lowercase:0 "count"
+
+ BARON:0 "Baroness"
+ BARON_lowercase:0 "baroness"
+ BARONESS:0 "Baron"
+ BARONESS_lowercase:0 "baron"
+
+ PRINCE:0 "Princess"
+ PRINCE_lowercase:0 "princess"
+ PRINCESS:0 "Prince"
+ PRINCESS_lowercase:0 "prince"
+
+ # ── Dynastic / family titles ──────────────────────────────────────────────────
+ DYNASTY_HEAD:0 "Matriarch"
+ DYNASTY_HEAD_lowercase:0 "matriarch"
+
+ LORD:0 "Lady"
+ LORD_lowercase:0 "lady"
+ LADY:0 "Lord"
+ LADY_lowercase:0 "lord"
+
+ # ── Pronouns (used in event scopes) ──────────────────────────────────────────
+ # CK3 uses [Character.GetHe], [Character.GetHim], etc.
+ # These keys provide the swapped defaults for female-first world.
+ PRON_HE:0 "she"
+ PRON_HE_cap:0 "She"
+ PRON_HIM:0 "her"
+ PRON_HIM_cap:0 "Her"
+ PRON_HIS:0 "her"
+ PRON_HIS_cap:0 "Her"
+ PRON_HIMSELF:0 "herself"
+
+ PRON_SHE:0 "he"
+ PRON_SHE_cap:0 "He"
+ PRON_HER:0 "him"
+ PRON_HER_cap:0 "Him"
+ PRON_HER_poss:0 "his"
+ PRON_HER_poss_cap:0 "His"
+ PRON_HERSELF:0 "himself"
+
+ # ── Family relations ──────────────────────────────────────────────────────────
+ FATHER:0 "Mother"
+ FATHER_lowercase:0 "mother"
+ MOTHER:0 "Father"
+ MOTHER_lowercase:0 "father"
+
+ SON:0 "Daughter"
+ SON_lowercase:0 "daughter"
+ DAUGHTER:0 "Son"
+ DAUGHTER_lowercase:0 "son"
+
+ BROTHER:0 "Sister"
+ BROTHER_lowercase:0 "sister"
+ SISTER:0 "Brother"
+ SISTER_lowercase:0 "brother"
+
+ GRANDFATHER:0 "Grandmother"
+ GRANDFATHER_lowercase:0 "grandmother"
+ GRANDMOTHER:0 "Grandfather"
+ GRANDMOTHER_lowercase:0 "grandfather"
+
+ GRANDSON:0 "Granddaughter"
+ GRANDSON_lowercase:0 "granddaughter"
+ GRANDDAUGHTER:0 "Grandson"
+ GRANDDAUGHTER_lowercase:0 "grandson"
+
+ UNCLE:0 "Aunt"
+ UNCLE_lowercase:0 "aunt"
+ AUNT:0 "Uncle"
+ AUNT_lowercase:0 "uncle"
+
+ NEPHEW:0 "Niece"
+ NEPHEW_lowercase:0 "niece"
+ NIECE:0 "Nephew"
+ NIECE_lowercase:0 "nephew"
+
+ # ── Marriage / consort titles ─────────────────────────────────────────────────
+ HUSBAND:0 "Wife"
+ HUSBAND_lowercase:0 "wife"
+ WIFE:0 "Husband"
+ WIFE_lowercase:0 "husband"
+
+ CONSORT:0 "Consort"   # gender-neutral, keep as-is
+ CONCUBINE:0 "Concubinus"
+ CONCUBINE_lowercase:0 "concubinus"
+
+ # ── Court & government ────────────────────────────────────────────────────────
+ CHANCELLOR:0 "Chancellor"       # already gender-neutral in English
+ MARSHAL:0 "Marshal"
+ STEWARD:0 "Steward"
+ SPYMASTER:0 "Spymistress"
+ SPYMASTER_lowercase:0 "spymistress"
+ COURT_CHAPLAIN:0 "Court Chaplain"
+
+ # ── Knighthood ────────────────────────────────────────────────────────────────
+ KNIGHT:0 "Dame"
+ KNIGHT_lowercase:0 "dame"
+ DAME:0 "Knight"
+ DAME_lowercase:0 "knight"
+
+ # ── Mod UI strings ────────────────────────────────────────────────────────────
+ MOD_NAME:0 "Crusader Queens"
+ MOD_FLAVOR_TEXT:0 "In a world where queens lead crusades and empresses forge dynasties, history bends to the will of women."

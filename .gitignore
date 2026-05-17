@@ -1,0 +1,29 @@
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Generated localization patches (produced by swap_localization.py)
+# Uncomment if you want to exclude them from the repo and generate on install
+# localization/english/vanilla_patched/
+
+# Workshop upload artifacts
+*.zip
+*.ck3mod
+
+# Local dev paths (don't commit your local CK3 install path)
+.env
+local_config.txt

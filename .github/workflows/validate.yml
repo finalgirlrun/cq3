@@ -1,0 +1,99 @@
+name: Validate Mod Structure
+
+on:
+  push:
+    branches: [ main, dev ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    name: Validate Crusader Queens mod files
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Check descriptor.mod exists
+        run: |
+          test -f descriptor.mod && echo "✅ descriptor.mod found" || (echo "❌ descriptor.mod missing" && exit 1)
+
+      - name: Validate descriptor.mod fields
+        run: |
+          python3 - <<'EOF'
+          import sys
+          with open("descriptor.mod") as f:
+              content = f.read()
+          required = ["version=", "name=", "supported_version="]
+          missing = [r for r in required if r not in content]
+          if missing:
+              print(f"❌ descriptor.mod missing fields: {missing}")
+              sys.exit(1)
+          print("✅ descriptor.mod fields OK")
+          EOF
+
+      - name: Check localization file encoding (UTF-8 BOM)
+        run: |
+          python3 - <<'EOF'
+          import sys
+          from pathlib import Path
+          errors = []
+          for yml in Path("localization").rglob("*.yml"):
+              raw = yml.read_bytes()
+              if not raw.startswith(b'\xef\xbb\xbf'):
+                  errors.append(str(yml))
+          if errors:
+              print("❌ These localization files are missing UTF-8 BOM:")
+              for e in errors:
+                  print(f"   {e}")
+              sys.exit(1)
+          print(f"✅ All {len(list(Path('localization').rglob('*.yml')))} localization file(s) have correct BOM")
+          EOF
+
+      - name: Check for placeholder leaks in localization
+        run: |
+          python3 - <<'EOF'
+          import sys
+          from pathlib import Path
+          leaks = []
+          for yml in Path("localization").rglob("*.yml"):
+              text = yml.read_text(encoding="utf-8-sig")
+              for line in text.splitlines():
+                  if "§" in line:
+                      leaks.append(f"{yml}: {line.strip()}")
+          if leaks:
+              print("❌ Unresolved swap placeholders found:")
+              for l in leaks[:10]:
+                  print(f"   {l}")
+              sys.exit(1)
+          print("✅ No placeholder leaks in localization files")
+          EOF
+
+      - name: Lint .txt files for common syntax errors
+        run: |
+          python3 - <<'EOF'
+          import sys
+          from pathlib import Path
+          errors = []
+          for txt in Path("common").rglob("*.txt"):
+              text = txt.read_text(encoding="utf-8", errors="replace")
+              open_braces  = text.count("{")
+              close_braces = text.count("}")
+              if open_braces != close_braces:
+                  errors.append(f"{txt}: unbalanced braces ({open_braces} open, {close_braces} close)")
+          if errors:
+              print("❌ Syntax issues found:")
+              for e in errors:
+                  print(f"   {e}")
+              sys.exit(1)
+          print(f"✅ All common/*.txt files have balanced braces")
+          EOF
+
+      - name: Summary
+        run: echo "✅ All checks passed — mod structure looks good!"

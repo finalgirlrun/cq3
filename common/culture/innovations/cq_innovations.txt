@@ -1,0 +1,40 @@
+# Crusader Queens - Custom Innovations
+# In this mod, patriarchal succession is a cultural regression, not progress.
+# "Innovation: Patriarchy" exists only so male-only succession has a gate —
+# prevents the AI from randomly unlocking it in normal play.
+
+innovation_cq_patriarchy = {
+	group = culture_group_misc
+	era = culture_era_early_medieval
+
+	# Flavor: this is framed as an unusual, backward cultural drift
+	character_modifier = {
+		monthly_prestige = -0.1    # Small prestige hit for cultures that adopt it
+	}
+
+	# Requires the culture to have drifted away from the matrilineal baseline
+	can_progress = {
+		NOT = { has_innovation = innovation_cq_matrilineal_tradition }
+		culture = {
+			has_cultural_parameter = allows_patriarchy
+		}
+	}
+
+	flag = innovation_cq_custom
+}
+
+# The baseline innovation all cultures start with — matrilineal tradition
+innovation_cq_matrilineal_tradition = {
+	group = culture_group_misc
+	era = culture_era_tribal
+
+	character_modifier = {
+		monthly_prestige = 0.1
+		dynasty_prestige_mult = 0.05
+	}
+
+	# All cultures start with this
+	starting_innovation = yes
+
+	flag = innovation_cq_custom
+}
